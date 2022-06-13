@@ -1,0 +1,33 @@
+.search_form{
+    margin-bottom: 5px;
+    width: 350px;
+    height: 40px;
+    position: relative;
+}
+.search_input{
+    width: 350px;
+}
+.autocomplete{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    background: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+    z-index: 111;
+    max-height: 240px;
+    height: auto;
+    overflow: auto;
+}
+.autocomplete_item{
+    padding: 10px;
+}
+
+.autocomplete_item:hover{
+    background: rgb(238, 238, 238);
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1).3s all;
+}

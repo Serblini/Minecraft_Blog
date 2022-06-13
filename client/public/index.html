@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <title>Minecraft Blog</title>
+  <style>
+    :root {
+      --theme-accent-color--rgb: 31, 39, 55;
+      --theme-body-background-image: url('/background.png');
+      --fandom-global-nav-link-color: #520044;
+      --theme-sticky-nav-text-color: #f6f6f6;
+      --fandom-global-nav-background-color: #ffc500;
+      --fandom-global-nav-border-top-width: 0;
+      --fandom-global-nav-link-color: #520044;
+      --mcw-header-background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0, rgba(0, 0, 0, 0.1) 158px, rgba(255, 255, 255, 0) 0), var(--mcw-grass-base), linear-gradient(0deg, rgba(255, 255, 255, 0) 168px, rgb(227, 227, 227) 168px, rgb(203, 217, 231) 210px, rgb(141, 189, 233) 268px);
+      --mcw-grass-base: url("/light_background_grass.png") --theme-border-color: #bbc2c6;
+    }
+
+    @media (min-width: 768px) {
+      .fandom-sticky-header {
+        min-width: 702px;
+        align-items: center;
+        /* background-color: var(--theme-sticky-nav-background-color); */
+        -webkit-box-shadow: 0 3px 12px 0 rgb(0 0 0 / 30%);
+      }
+    }
+
+    .b-0,
+    .b-0:focus {
+      border: 0;
+    }
+
+    .bb,
+    .b-0:focus {
+      border-bottom: 1px solid #C5CED9;
+      box-shadow: none;
+    }
+
+    .popover {
+      position: fixed !important;
+    }
+
+    .fandom-sticky-header {
+      transform: translateY(100%);
+
+      background: linear-gradient(0deg, rgba(var(--theme-accent-color--rgb), 0.1) 0%, rgba(255, 255, 255, 0) 50%), var(--theme-body-background-image);
+      box-shadow: 0 3px 12px 0 rgb(0 0 0 / 30%);
+      color: var(--theme-sticky-nav-text-color);
+      display: -webkit-box;
+      display: flex;
+      height: 46px;
+      left: 66px;
+      min-width: 460px;
+      padding: 0 12px;
+      position: fixed;
+      right: 0;
+      top: -46px;
+      -webkit-transition: -webkit-transform 0.5s;
+      transition: -webkit-transform 0.5s;
+      transition: transform 0.5s;
+      transition: transform 0.5s, -webkit-transform 0.5s;
+      z-index: 701;
+    }
+
+    .global-navigation {
+
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-box-pack: justify;
+      background-color: var(--fandom-global-nav-background-color);
+      border-top: var(--fandom-global-nav-border-top-width) solid var(--fandom-global-nav-link-color);
+      bottom: 0;
+      -webkit-box-shadow: 0 3px 12px 0 rgb(0 0 0 / 30%);
+      box-shadow: 0 3px 12px 0 rgb(0 0 0 / 30%);
+      color: var(--fandom-global-nav-link-color);
+      display: -webkit-box;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      justify-content: space-between;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 66px;
+      z-index: 500;
+    }
+
+    .global-navigation a,
+    .global-navigation svg,
+    .global-navigation a:hover {
+      color: black;
+    }
+
+    .fandom-sticky-header__logo,
+    .fandom-sticky-header__sitename,
+    .auth__title,
+    .header-types,
+    .page-item.active .page-link {
+      font-family: "Rubik", "Helvetica", "Arial", sans-serif;
+    }
+
+    .header-types:hover {
+      color: #0056b3 !important;
+      transition: .3s;
+    }
+
+    .auth-popover__title--fiol {
+      color: #1e0c1b;
+      border-color: #1e0c1b;
+      background-color: transparent;
+    }
+
+    .auth-log__btn,
+    .list-group-item.active,
+    .page-item.active .page-link {
+      color: white;
+      border-color: #1e0c1b !important;
+      background-color: #520044 !important;
+    }
+
+    .auth__title--fiol {
+      color: #1e0c1b;
+    }
+
+    .fandom-sticky-header__logo img {
+      display: block;
+      margin-right: 12px;
+      max-height: 30px;
+      max-width: 75px;
+      -o-object-fit: scale-down;
+      object-fit: scale-down;
+      width: auto;
+    }
+
+    .main-container {
+      position: relative;
+      margin-left: 66px;
+      min-width: 702px;
+      margin-top: 46px;
+      width: calc(100% - 66px);
+      min-height: 100vh;
+    }
+
+    .wds-icon {
+      height: 45px;
+      width: 60px;
+      fill: currentColor;
+      min-width: 24px;
+    }
+
+    .global-navigation__logo {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      color: black;
+    }
+
+    .global-navigation__link {
+      -webkit-box-align: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      align-items: center;
+      color: var(--fandom-global-nav-link-color);
+      display: -webkit-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media only screen and (max-height: 650px) {
+      .global-navigation__icon.has-border {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .global-navigation__icon {
+      -webkit-box-align: center;
+      align-items: center;
+      background-color: transparent;
+      border: 2px solid var(--fandom-global-nav-background-color);
+      border-radius: 50%;
+      display: inline-grid;
+      height: 40px;
+      justify-items: center;
+      position: relative;
+      -webkit-transition-duration: .3s;
+      transition-duration: .3s;
+      -webkit-transition-property: background-color, border-color;
+      transition-property: background-color, border-color;
+      width: 40px;
+    }
+
+    .global-navigation__icon.has-border {
+      border-color: var(--fandom-global-nav-icon-border-color);
+      height: 36px;
+      width: 36px;
+    }
+
+    @media only screen and (max-height: 650px) {
+
+      .global-navigation__icon.has-background svg,
+      .global-navigation__icon.has-border svg {
+        height: 18px;
+        min-width: 18px;
+        width: 18px;
+      }
+    }
+
+    .wds-icon {
+      fill: currentColor;
+      height: 24px;
+      min-width: 24px;
+      width: 24px;
+    }
+
+    .wds-icon-small {
+      height: 18px;
+      min-width: 18px;
+      width: 18px;
+    }
+
+    /* @media only screen and (max-height: 650px) { */
+      .global-navigation__icon svg {
+        /* height: 22px; */
+        min-width: 22px;
+        /* width: 22px; */
+      }
+
+      .global-navigation__nav {
+        grid-row-gap: 15px;
+      }
+
+      .global-navigation__links {
+        grid-row-gap: 6px;
+        display: grid;
+      }
+
+      .global-navigation__label {
+        margin-top: 2px;
+      }
+    /* } */
+
+    .global-navigation__logo .wds-icon {
+      height: 45px;
+      margin-bottom: 6px;
+      width: 60px;
+    }
+
+    .global-navigation__bottom,
+    .global-navigation__top {
+      padding: 9px 0;
+    }
+
+    .global-navigation__bottom,
+    .global-navigation__nav,
+    .global-navigation__top {
+      display: grid;
+      justify-items: center;
+    }
+
+    .global-navigation__links {
+      grid-row-gap: 15px;
+      display: grid;
+    }
+
+    .global-navigation__label {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 4px;
+      max-width: 54px;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      -webkit-transition: color, opacity .3s;
+      transition: color, opacity .3s;
+    }
+
+    .auth-popover {
+      left: 50px;
+      bottom: 0;
+      top: unset;
+    }
+
+    .auth-popover .arrow {
+      bottom: 15px;
+    }
+
+    .post-popover {
+      left: 55px;
+      top: 100px;
+      width: 500px;
+    }
+
+    .post-popover .arrow,
+    .type-popover .arrow {
+      top: 30px;
+    }
+
+    .type-popover {
+      left: 55px;
+      top: 180px;
+    }
+
+    .background__container {
+      background-image: url("/background.png");
+      background-repeat: repeat;
+      top: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -9;
+
+
+    }
+
+    .fandom-community-header__background.tileHorizontally {
+      background-repeat: repeat-x;
+    }
+
+    .fandom-community-header__background {
+      background: var(--mcw-header-background);
+      min-width: inherit;
+      height: 305px;
+      position: relative;
+      background-size: 160px !important;
+      background-position: bottom left !important;
+      background-repeat: repeat-x;
+      margin-bottom: -305px;
+    }
+
+    .header-types {}
+
+
+
+    .rail-module__list {
+      grid-gap: 12px;
+      display: grid;
+      grid-template-columns: auto;
+      line-height: 1.5;
+      list-style: none;
+    }
+
+
+    .popular-pages__item>a {
+      -webkit-box-align: center;
+      grid-column-gap: 12px;
+      align-items: center;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+    }
+
+    .popular-pages__image {
+      -webkit-box-align: center;
+      align-items: center;
+      background: var(--theme-border-color);
+      border: 1px solid var(--theme-border-color);
+      border-radius: 3px;
+      display: grid;
+      /* height: 55px; */
+      justify-items: center;
+      min-width: 55px;
+      width: 90px;
+    }
+
+    .delete-popover {
+      top: 260px;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
+</html>
